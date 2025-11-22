@@ -26,7 +26,13 @@
     "tabs": { "note": "笔记", "fav": "收藏", "liked": "赞过" },
     "pic1Title": "自拍一张 ~",
     "pic1Likes": "❤ 1.2w",
-    "pic2Title": "探店 ..."
+    "pic2Title": "探店 ...",
+    "feed": [
+      { "title": "清晨的雪", "likes": "❤ 2.3w", "image": "https://picsum.photos/seed/lx1/600/900" },
+      { "title": "咖啡与书", "likes": "❤ 1.1w", "image": "https://picsum.photos/seed/lx2/600/900" },
+      { "title": "夜色街景", "likes": "❤ 8.6k", "image": "https://picsum.photos/seed/lx3/600/900" },
+      { "title": "猫咪日常", "likes": "❤ 3.9w", "image": "https://picsum.photos/seed/lx4/600/900" }
+    ]
   },
   "scene2": {
     "drinkLabel": "饮料",
