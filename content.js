@@ -36,13 +36,13 @@ window.CONTENT = {
     followBtn: "关注",
     tabs: { notes: "笔记", favorites: "收藏", liked: "赞过" },
     feedCards: [
-      { title: "今日份自拍~✨", likes: "520", asset: "assets/35562337-65d5-487c-a631-fae7a57139fd.png" },
-      { title: "超好吃的火锅🍲", likes: "102", asset: "assets/6b2a774e-03b3-403e-be13-19778ec5fa7d.png" },
-      { title: "周末去看了展🎨", likes: "330", asset: "assets/7795f23f-a151-4aa0-93e2-636dd15a5b99.png" },
-      { title: "神仙奶茶!", likes: "89", asset: "assets/6b2a774e-03b3-403e-be13-19778ec5fa7d.png" },
-      { title: "求抱抱", likes: "999", asset: "assets/35562337-65d5-487c-a631-fae7a57139fd.png" }
+      { title: "今日份自拍~✨", likes: "520", asset: "assets/2.jpg" },
+      { title: "超好吃的火锅🍲", likes: "102", asset: "assets/3.jpg" },
+      { title: "周末去看了展🎨", likes: "330", asset: "assets/4.jpg" },
+      { title: "神仙奶茶!", likes: "89", asset: "assets/5.jpg" },
+      { title: "求抱抱", likes: "999", asset: "assets/2.jpg" }
     ],
-    avatar: "assets/a8d224db-895c-426c-92a0-c32c5d61125d.png"
+    avatar: "assets/1.jpg"
   },
   dinner: {
     cashier: "收银台",
