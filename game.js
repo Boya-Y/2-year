@@ -2,6 +2,15 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const fadeLayer = document.getElementById('fadeLayer');
 const tooltip = document.getElementById('tooltip');
+const S = (s) => (window.GAME_CONTENT && window.GAME_CONTENT[s]) || s;
+const ASSETS = window.GAME_ASSETS || {};
+const assetImages = { avatar: null, cards: [] };
+(function initAssets(){
+  if (ASSETS.avatar) { assetImages.avatar = new Image(); assetImages.avatar.src = ASSETS.avatar; }
+  if (Array.isArray(ASSETS.scene1Cards)) {
+    assetImages.cards = ASSETS.scene1Cards.map(u => { const i=new Image(); i.src=u; return i; });
+  }
+})();
 
 // 游戏状态
 const STATE = {
@@ -466,9 +475,9 @@ function updateMenu() {
     ctx.fillStyle = COLORS.bg;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    drawText("拣 爱", 400, 250, 80, COLORS.primary);
-    drawText("网页致敬版", 400, 300, 24, "#aaa");
-    drawText("手机版已适配", 400, 550, 14, "#ccc");
+    drawText(S("拣 爱"), 400, 250, 80, COLORS.primary);
+    drawText(S("网页致敬版"), 400, 300, 24, "#aaa");
+    drawText(S("手机版已适配"), 400, 550, 14, "#ccc");
 
     const scale = 1 + Math.sin(frameCount * 0.05) * 0.05;
     ctx.save();
@@ -477,9 +486,9 @@ function updateMenu() {
     drawText("❤", 0, 0, 60, COLORS.primary);
     ctx.restore();
 
-    drawButton("开始故事", 300, 400, 200, 60, () => {
-        transitionTo(STATE.SCENE_1_CHAT, resetGame);
-    });
+    drawButton(S("开始故事"), 300, 400, 200, 60, () => {
+        transitionTo(STATE.SCENE_1_CHAT, resetGame);
+    });
 }
 
 function updateScene1() {
@@ -491,14 +500,14 @@ function updateScene1() {
     drawRect(px + 10, py + 10, pw - 20, ph - 20, COLORS.phone_screen, 20);
 
     drawRect(px + 10, py + 10, pw - 20, 20, '#fff', 20);
-    drawText("9:41", px + 40, py + 26, 10, '#333');
+    drawText(S("9:41"), px + 40, py + 26, 10, '#333');
     drawRect(px + pw - 50, py + 18, 16, 8, '#333', 2);
 
     const topBarY = py + 30;
     drawRect(px + 10, topBarY, pw - 20, 40, '#fff');
 
     drawIcon('back', px + 30, topBarY + 20, 12, '#333');
-    drawText("橘生✨", px + 150, topBarY + 25, 16, '#333', 'center', 'sans-serif');
+    drawText(S("橘生✨"), px + 150, topBarY + 25, 16, '#333', 'center', 'sans-serif');
     drawIcon('more', px + 270, topBarY + 20, 12, '#333');
 
     ctx.strokeStyle = COLORS.line_gray;
@@ -509,15 +518,19 @@ function updateScene1() {
     const avatarY = topBarY + 60;
     const avatarR = 20;
 
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(avatarX + avatarR, avatarY + avatarR, avatarR, 0, Math.PI * 2);
-    ctx.clip();
-    ctx.fillStyle = '#ffe4e1';
-    ctx.fillRect(avatarX, avatarY, avatarR*2, avatarR*2);
-    ctx.fillStyle = COLORS.xhs_red;
-    ctx.beginPath(); ctx.arc(avatarX + avatarR, avatarY + avatarR + 5, 12, 0, Math.PI*2); ctx.fill();
-    ctx.restore();
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(avatarX + avatarR, avatarY + avatarR, avatarR, 0, Math.PI * 2);
+    ctx.clip();
+    if (assetImages.avatar && assetImages.avatar.complete) {
+      ctx.drawImage(assetImages.avatar, avatarX, avatarY, avatarR*2, avatarR*2);
+    } else {
+      ctx.fillStyle = '#ffe4e1';
+      ctx.fillRect(avatarX, avatarY, avatarR*2, avatarR*2);
+      ctx.fillStyle = COLORS.xhs_red;
+      ctx.beginPath(); ctx.arc(avatarX + avatarR, avatarY + avatarR + 5, 12, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.restore();
 
     if (!flags.sawMoments) {
         drawCircle(avatarX + 2 * avatarR - 2, avatarY + 5, 4, 'red');
@@ -534,8 +547,8 @@ function updateScene1() {
     let textY = topBarY + 65;
     let currentY = textY;
 
-    const h1 = drawChatBubble(px + 75, currentY + 5, "dd", false);
-    drawText("昨天 20:30", px + 150, topBarY + 50, 10, '#ccc');
+    const h1 = drawChatBubble(px + 75, currentY + 5, "dd", false);
+    drawText(S("昨天 20:30"), px + 150, topBarY + 50, 10, '#ccc');
 
     if (scene1ReplyConfig.choiceMade) {
         scene1ReplyConfig.timer++;
@@ -548,11 +561,15 @@ function updateScene1() {
         if (scene1ReplyConfig.timer > 60) {
             currentY += h2 + 20;
 
-            ctx.save();
-            ctx.beginPath(); ctx.arc(avatarX + avatarR, currentY + 20, avatarR, 0, Math.PI * 2); ctx.clip();
-            ctx.fillStyle = '#ffe4e1'; ctx.fillRect(avatarX, currentY, avatarR*2, avatarR*2);
-            ctx.fillStyle = COLORS.xhs_red; ctx.beginPath(); ctx.arc(avatarX + avatarR, currentY + 25, 12, 0, Math.PI*2); ctx.fill();
-            ctx.restore();
+            ctx.save();
+            ctx.beginPath(); ctx.arc(avatarX + avatarR, currentY + 20, avatarR, 0, Math.PI * 2); ctx.clip();
+            if (assetImages.avatar && assetImages.avatar.complete) {
+              ctx.drawImage(assetImages.avatar, avatarX, currentY, avatarR*2, avatarR*2);
+            } else {
+              ctx.fillStyle = '#ffe4e1'; ctx.fillRect(avatarX, currentY, avatarR*2, avatarR*2);
+              ctx.fillStyle = COLORS.xhs_red; ctx.beginPath(); ctx.arc(avatarX + avatarR, currentY + 25, 12, 0, Math.PI*2); ctx.fill();
+            }
+            ctx.restore();
 
             const h3 = drawChatBubble(px + 75, currentY + 5, scene1ReplyConfig.replyText, false);
 
@@ -566,7 +583,7 @@ function updateScene1() {
                         if ((i+j)%2==0) drawRect(px+85 + i*16, qrY+10 + j*16, 10, 10, '#000');
                     }
                 }
-                drawText("扫一扫加我", px + 125, qrY + 120, 12, '#999');
+                drawText(S("扫一扫加我"), px + 125, qrY + 120, 12, '#999');
             }
         }
 
@@ -618,11 +635,11 @@ function updateScene1() {
         ctx.restore();
     }
 
-    if (flags.scene1InputClicked) {
-        drawText(" |", px + 70, py + ph - 40, 12, '#333', 'left', 'sans-serif');
-    } else {
-        drawText(" 说点什么...", px + 70, py + ph - 40, 12, '#999', 'left', 'sans-serif');
-    }
+    if (flags.scene1InputClicked) {
+        drawText(S(" |"), px + 70, py + ph - 40, 12, '#333', 'left', 'sans-serif');
+    } else {
+        drawText(S(" 说点什么..."), px + 70, py + ph - 40, 12, '#999', 'left', 'sans-serif');
+    }
 
     drawCircle(px + 245, py + ph - 45, 12, COLORS.ui_gray);
     drawText("+", px + 245, py + ph - 41, 16, '#666');
@@ -633,30 +650,30 @@ function updateScene1() {
         const btnW = 260;
         const btnX = px + (pw - btnW) / 2;
 
-        drawButton("你好啊", btnX, optY, btnW, 36, () => {
-            scene1ReplyConfig.choiceMade = true;
-            scene1ReplyConfig.userText = "你好啊";
-            scene1ReplyConfig.replyText = "你好你好";
-        }, btnColor);
+        drawButton(S("你好啊"), btnX, optY, btnW, 36, () => {
+            scene1ReplyConfig.choiceMade = true;
+            scene1ReplyConfig.userText = S("你好啊");
+            scene1ReplyConfig.replyText = S("你好你好");
+        }, btnColor);
 
-        drawButton("同学你好，请问你叫什么名字", btnX, optY + 45, btnW, 36, () => {
-            scene1ReplyConfig.choiceMade = true;
-            scene1ReplyConfig.userText = "同学你好，请问你叫什么名字";
-            scene1ReplyConfig.replyText = "我叫周梦雪，你叫什么？";
-            score += 0;
-        }, btnColor);
+        drawButton(S("同学你好，请问你叫什么名字"), btnX, optY + 45, btnW, 36, () => {
+            scene1ReplyConfig.choiceMade = true;
+            scene1ReplyConfig.userText = S("同学你好，请问你叫什么名字");
+            scene1ReplyConfig.replyText = S("我叫周梦雪，你叫什么？");
+            score += 0;
+        }, btnColor);
 
         if (flags.sawMoments) {
             ctx.shadowBlur = 10;
             ctx.shadowColor = 'rgba(255, 36, 66, 0.3)';
-            drawButton("同学你好漂亮，微信号也一定很好记吧", btnX, optY - 45, btnW, 36, () => {
-                scene1ReplyConfig.choiceMade = true;
-                scene1ReplyConfig.userText = "同学你好漂亮，微信号也一定很好记吧";
-                scene1ReplyConfig.replyText = "油嘴滑舌！";
-                scene1ReplyConfig.showQR = true;
-                score += 2;
-                flags.scene1Correct = true;
-            }, btnColor);
+            drawButton(S("同学你好漂亮，微信号也一定很好记吧"), btnX, optY - 45, btnW, 36, () => {
+                scene1ReplyConfig.choiceMade = true;
+                scene1ReplyConfig.userText = S("同学你好漂亮，微信号也一定很好记吧");
+                scene1ReplyConfig.replyText = S("油嘴滑舌！");
+                scene1ReplyConfig.showQR = true;
+                score += 2;
+                flags.scene1Correct = true;
+            }, btnColor);
             ctx.shadowBlur = 0;
         }
     }
@@ -684,35 +701,42 @@ function updateScene1Phone() {
 
     const infoY = py + 110;
 
-    drawCircle(px + 50, infoY, 38, '#fff');
-    drawCircle(px + 50, infoY, 35, '#ffe4e1');
-    ctx.fillStyle = COLORS.xhs_red;
-    ctx.beginPath(); ctx.arc(px + 50, infoY + 8, 20, 0, Math.PI*2); ctx.fill();
+    ctx.save();
+    ctx.beginPath(); ctx.arc(px + 50, infoY, 35, 0, Math.PI*2); ctx.clip();
+    if (assetImages.avatar && assetImages.avatar.complete) {
+      ctx.drawImage(assetImages.avatar, px + 15, infoY - 35, 70, 70);
+    } else {
+      drawCircle(px + 50, infoY, 38, '#fff');
+      drawCircle(px + 50, infoY, 35, '#ffe4e1');
+      ctx.fillStyle = COLORS.xhs_red;
+      ctx.beginPath(); ctx.arc(px + 50, infoY + 8, 20, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.restore();
 
-    drawText("橘生✨", px + 100, infoY + 15, 20, '#333', 'left', 'sans-serif');
-    drawText("小红薯号：9527888", px + 100, infoY + 35, 10, '#999', 'left', 'sans-serif');
+    drawText(S("橘生✨"), px + 100, infoY + 15, 20, '#333', 'left', 'sans-serif');
+    drawText(S("小红薯号：9527888"), px + 100, infoY + 35, 10, '#999', 'left', 'sans-serif');
 
-    drawText("吃喝玩乐✨ | 摄影📷 | 分享生活", px + 30, infoY + 65, 12, '#333', 'left', 'sans-serif');
+    drawText(S("吃喝玩乐✨ | 摄影📷 | 分享生活"), px + 30, infoY + 65, 12, '#333', 'left', 'sans-serif');
 
     const statsY = infoY + 90;
-    drawText("12", px + 40, statsY, 14, '#333');
-    drawText("关注", px + 40, statsY + 15, 10, '#999');
+    drawText(S("12"), px + 40, statsY, 14, '#333');
+    drawText(S("关注"), px + 40, statsY + 15, 10, '#999');
 
-    drawText("326", px + 90, statsY, 14, '#333');
-    drawText("粉丝", px + 90, statsY + 15, 10, '#999');
+    drawText(S("326"), px + 90, statsY, 14, '#333');
+    drawText(S("粉丝"), px + 90, statsY + 15, 10, '#999');
 
-    drawText("1.2k", px + 140, statsY, 14, '#333');
-    drawText("获赞与收藏", px + 160, statsY + 15, 10, '#999');
+    drawText(S("1.2k"), px + 140, statsY, 14, '#333');
+    drawText(S("获赞与收藏"), px + 160, statsY + 15, 10, '#999');
 
     drawRect(px + 200, infoY, 70, 28, COLORS.xhs_red, 14);
-    drawText("关注", px + 235, infoY + 19, 12, '#fff');
+    drawText(S("关注"), px + 235, infoY + 19, 12, '#fff');
     drawCircle(px + 285, infoY + 14, 14, COLORS.ui_gray);
 
     const tabY = statsY + 30;
-    drawText("笔记", px + 50, tabY, 14, '#333', 'center', 'sans-serif');
+    drawText(S("笔记"), px + 50, tabY, 14, '#333', 'center', 'sans-serif');
     drawRect(px + 35, tabY + 8, 30, 2, COLORS.xhs_red);
-    drawText("收藏", px + 120, tabY, 14, '#999', 'center', 'sans-serif');
-    drawText("赞过", px + 190, tabY, 14, '#999', 'center', 'sans-serif');
+    drawText(S("收藏"), px + 120, tabY, 14, '#999', 'center', 'sans-serif');
+    drawText(S("赞过"), px + 190, tabY, 14, '#999', 'center', 'sans-serif');
 
     ctx.strokeStyle = '#f0f0f0'; ctx.beginPath(); ctx.moveTo(px+10, tabY+10); ctx.lineTo(px+pw-10, tabY+10); ctx.stroke();
 
@@ -721,38 +745,45 @@ function updateScene1Phone() {
     const cardH = 160;
     const gapY = 10;
 
-    function drawCard(cx, cy, title, likeCount, type) {
-        drawRect(cx, cy, cardW, cardH, '#fff', 8);
-        ctx.strokeStyle = '#f5f5f5'; ctx.strokeRect(cx, cy, cardW, cardH);
-        drawRect(cx, cy, cardW, 110, '#f9f9f9', 8);
-        ctx.fillRect(cx, cy+100, cardW, 10);
+    function drawCard(cx, cy, title, likeCount, type, idx) {
+        drawRect(cx, cy, cardW, cardH, '#fff', 8);
+        ctx.strokeStyle = '#f5f5f5'; ctx.strokeRect(cx, cy, cardW, cardH);
+        drawRect(cx, cy, cardW, 110, '#f9f9f9', 8);
+        ctx.fillRect(cx, cy+100, cardW, 10);
+        const img = assetImages.cards[idx];
+        if (img && img.complete) {
+          ctx.save();
+          ctx.beginPath(); ctx.roundRect(cx, cy, cardW, 110, 8); ctx.clip();
+          ctx.drawImage(img, cx, cy, cardW, 110);
+          ctx.restore();
+        } else {
+          if (type === 'selfie') {
+              ctx.fillStyle = COLORS.highlight;
+              ctx.beginPath(); ctx.arc(cx + cardW/2, cy + 60, 20, 0, Math.PI*2); ctx.fill();
+          } else if (type === 'food') {
+              drawCircle(cx + cardW/2, cy + 60, 15, '#ffd700');
+          } else if (type === 'scenery') {
+              ctx.fillStyle = '#87ceeb';
+              drawRect(cx+30, cy+40, 70, 40, '#87ceeb');
+          }
+        }
 
-        if (type === 'selfie') {
-             ctx.fillStyle = COLORS.highlight;
-             ctx.beginPath(); ctx.arc(cx + cardW/2, cy + 60, 20, 0, Math.PI*2); ctx.fill();
-        } else if (type === 'food') {
-             drawCircle(cx + cardW/2, cy + 60, 15, '#ffd700');
-        } else if (type === 'scenery') {
-             ctx.fillStyle = '#87ceeb';
-             drawRect(cx+30, cy+40, 70, 40, '#87ceeb');
-        }
-
-        drawText(title, cx + 10, cy + 130, 12, '#333', 'left');
-        drawCircle(cx + 15, cy + 148, 8, '#eee');
-        drawText("橘生✨", cx + 30, cy + 152, 10, '#999', 'left');
-        drawText("❤ " + likeCount, cx + cardW - 10, cy + 152, 10, '#999', 'right');
+        drawText(S(title), cx + 10, cy + 130, 12, '#333', 'left');
+        drawCircle(cx + 15, cy + 148, 8, '#eee');
+        drawText(S("橘生✨"), cx + 30, cy + 152, 10, '#999', 'left');
+        drawText(S("❤ ") + likeCount, cx + cardW - 10, cy + 152, 10, '#999', 'right');
     }
 
-    drawCard(px + 20, contentY, "今日份自拍~✨", "520", 'selfie');
-    drawCard(px + 20 + cardW + 10, contentY, "超好吃的火锅🍲", "102", 'food');
+    drawCard(px + 20, contentY, "今日份自拍~✨", "520", 'selfie', 0);
+    drawCard(px + 20 + cardW + 10, contentY, "超好吃的火锅🍲", "102", 'food', 1);
 
     const row2Y = contentY + cardH + gapY;
-    drawCard(px + 20, row2Y, "周末去看了展🎨", "330", 'scenery');
-    drawCard(px + 20 + cardW + 10, row2Y, "这是什么神仙奶茶!", "89", 'food');
+    drawCard(px + 20, row2Y, "周末去看了展🎨", "330", 'scenery', 2);
+    drawCard(px + 20 + cardW + 10, row2Y, "这是什么神仙奶茶!", "89", 'food', 3);
 
     const row3Y = row2Y + cardH + gapY;
-    drawCard(px + 20, row3Y, "心情不好 求抱抱", "999", 'selfie');
-    drawCard(px + 20 + cardW + 10, row3Y, "偶遇一只小猫咪🐱", "245", 'scenery');
+    drawCard(px + 20, row3Y, "心情不好 求抱抱", "999", 'selfie', 4);
+    drawCard(px + 20 + cardW + 10, row3Y, "偶遇一只小猫咪🐱", "245", 'scenery', 5);
 
     ctx.restore();
 
@@ -778,10 +809,10 @@ function updateScene1Phone() {
     ctx.fillRect(px+10, py+ph-60, pw-20, 50);
     ctx.restore();
 
-    drawButton("返回聊天", px + 50, py + 440, 200, 40, () => {
-        flags.sawMoments = true;
-        currentState = STATE.SCENE_1_CHAT;
-    }, COLORS.xhs_red);
+    drawButton(S("返回聊天"), px + 50, py + 440, 200, 40, () => {
+        flags.sawMoments = true;
+        currentState = STATE.SCENE_1_CHAT;
+    }, COLORS.xhs_red);
 }
 
 function updateSceneHomeTV() {
@@ -866,13 +897,13 @@ function updateSceneHomeTV() {
         let dt = homeTvTimer - lipstickClickFrame;
 
         if (dt < 150) {
-            msg = "我：入冬了，嘴唇稍微有点干...";
+            msg = S("我：入冬了，嘴唇稍微有点干...");
         } else {
-            msg = "她：（拿起唇膏）别动，我帮你涂。";
+            msg = S("她：（拿起唇膏）别动，我帮你涂。");
             ctx.save();
             ctx.translate(300, 300);
             ctx.scale(1 + Math.sin(frameCount*0.1)*0.2, 1 + Math.sin(frameCount*0.1)*0.2);
-            drawText("❤", 0, 0, 50, COLORS.primary);
+            drawText(S("❤"), 0, 0, 50, COLORS.primary);
             ctx.restore();
         }
 
@@ -881,9 +912,9 @@ function updateSceneHomeTV() {
         }
     } else {
         if (homeTvTimer < 100) {
-            msg = "（不知不觉，天色渐晚，电影也快放完了...）";
+            msg = S("（不知不觉，天色渐晚，电影也快放完了...）");
         } else if (homeTvTimer > 200) {
-            msg = "我应该...";
+            msg = S("我应该...");
             showHomeOptions = true;
         }
     }
@@ -892,16 +923,16 @@ function updateSceneHomeTV() {
 
     if (showHomeOptions && !flags.usedLipstick && !homeTvReaction.active) {
         const btnY = 520;
-        drawButton("天色太晚了，我先回家了", 150, btnY, 240, 50, () => {
+            drawButton(S("天色太晚了，我先回家了"), 150, btnY, 240, 50, () => {
              homeTvReaction = {
                  active: true,
-                 text: "她：好，那你路上小心。",
+                    text: S("她：好，那你路上小心。"),
                  color: "#333",
                  timer: 0
              };
         });
 
-        drawButton("我能在你家过夜吗？", 410, btnY, 240, 50, () => {
+            drawButton(S("我能在你家过夜吗？"), 410, btnY, 240, 50, () => {
             homeTvReaction = {
                  active: true,
                  text: "她：滚😡！",
