@@ -188,9 +188,9 @@ function checkPerfectRun() {
 // ==================== 核心：移动端输入处理 ====================
 
 function getInputPos(evt) {
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    const scaleY = canvas.height / rect.height;
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = (canvas.width / rect.width) / DPR;
+    const scaleY = (canvas.height / rect.height) / DPR;
 
     let clientX, clientY;
 
@@ -205,10 +205,10 @@ function getInputPos(evt) {
         clientY = evt.clientY;
     }
 
-    return {
-        x: (clientX - rect.left) * scaleX,
-        y: (clientY - rect.top) * scaleY
-    };
+    return {
+        x: (clientX - rect.left) * scaleX,
+        y: (clientY - rect.top) * scaleY
+    };
 }
 
 function handleStart(e) {
