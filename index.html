@@ -367,7 +367,7 @@
                  ctx.save(); ctx.translate(LOGIC_W/2, lockY); ctx.rotate(s.frameCount * 0.2); ctx.beginPath(); ctx.arc(0, 0, 10, 0, Math.PI*2); ctx.stroke(); ctx.restore();
             } else if (s.notification.phase >= 2) {
                 ctx.save(); ctx.translate(LOGIC_W/2, lockY); ctx.fillStyle = '#fff'; drawRect(-8, -6, 16, 12, '#fff', 2); ctx.beginPath(); ctx.arc(0, -6, 5, Math.PI, 0); ctx.stroke(); ctx.restore();
-                drawText("面容ID已解锁", LOGIC_W/2, lockY + 30, 12, '#fff');
+                drawText(CONTENT.lock.faceIdUnlocked, LOGIC_W/2, lockY + 30, 12, '#fff');
             } else {
                 ctx.save(); ctx.translate(LOGIC_W/2, lockY); drawRect(-8, -6, 16, 12, '#fff', 2); ctx.beginPath(); ctx.arc(0, -6, 5, Math.PI, 0); ctx.stroke(); ctx.restore();
             }
@@ -418,7 +418,23 @@
             const inputY = LOGIC_H - 70; drawRect(0, LOGIC_H - 80, LOGIC_W, 80, '#fff'); ctx.strokeStyle = COLORS.line_gray; ctx.beginPath(); ctx.moveTo(0, LOGIC_H - 80); ctx.lineTo(LOGIC_W, LOGIC_H - 80); ctx.stroke();
             const inputW = LOGIC_W - 100; let inputStroke = !f.scene1InputClicked && isHover(20, inputY, inputW, 40) ? COLORS.xhs_red : 'transparent'; if (f.scene1InputClicked) inputStroke = COLORS.xhs_red;
             if (interactive && !f.scene1InputClicked && isHover(20, inputY, inputW, 40) && s.mouse.clicked) { s.mouse.clicked = false; f.scene1InputClicked = true; }
-            drawRect(20, inputY, inputW, 40, COLORS.ui_gray, 20); if (inputStroke !== 'transparent') { ctx.save(); ctx.strokeStyle = inputStroke; ctx.lineWidth = 1; ctx.beginPath(); ctx.roundRect(20, inputY, inputW, 40, 20); ctx.stroke(); ctx.restore(); }
+            const strokeRounded = (x, y, w, h, r) => {
+              ctx.beginPath();
+              if (ctx.roundRect) { ctx.roundRect(x, y, w, h, r); ctx.stroke(); return; }
+              const rr = Number(r) || 0; const rad = Math.min(rr, Math.min(w, h) / 2);
+              ctx.moveTo(x + rad, y);
+              ctx.lineTo(x + w - rad, y);
+              ctx.quadraticCurveTo(x + w, y, x + w, y + rad);
+              ctx.lineTo(x + w, y + h - rad);
+              ctx.quadraticCurveTo(x + w, y + h, x + w - rad, y + h);
+              ctx.lineTo(x + rad, y + h);
+              ctx.quadraticCurveTo(x, y + h, x, y + h - rad);
+              ctx.lineTo(x, y + rad);
+              ctx.quadraticCurveTo(x, y, x + rad, y);
+              ctx.stroke();
+            };
+            drawRect(20, inputY, inputW, 40, COLORS.ui_gray, 20);
+            if (inputStroke !== 'transparent') { ctx.save(); ctx.strokeStyle = inputStroke; ctx.lineWidth = 1; strokeRounded(20, inputY, inputW, 40, 20); ctx.restore(); }
             drawText(f.scene1InputClicked ? " |" : CONTENT.scene1.inputPlaceholder, 60, inputY + 25, 14, f.scene1InputClicked ? '#333' : '#999', 'left'); drawCircle(LOGIC_W - 40, inputY + 20, 15, COLORS.ui_gray); drawText("+", LOGIC_W - 40, inputY + 26, 20, '#666');
             if (interactive && s.frameCount > 60 && f.scene1InputClicked) {
                 const btnW = 280, btnX = (LOGIC_W - btnW) / 2; const optY = LOGIC_H - 250;
@@ -459,7 +475,7 @@
             ctx.restore();
             drawIcon('back', 30, 50, 12, '#fff');
             if (isHover(0, 0, 80, 80) && s.mouse.clicked) { s.mouse.clicked = false; s.flags.sawMoments = true; transitionTo(STATE.SCENE_1_CHAT, true); }
-            drawButton("返回聊天", (LOGIC_W - 200)/2, LOGIC_H - 80, 200, 50, () => { s.flags.sawMoments = true; transitionTo(STATE.SCENE_1_CHAT, true); }, COLORS.xhs_red);
+            drawButton(CONTENT.xhs.backToChat, (LOGIC_W - 200)/2, LOGIC_H - 80, 200, 50, () => { s.flags.sawMoments = true; transitionTo(STATE.SCENE_1_CHAT, true); }, COLORS.xhs_red);
         };
 
         const updateScene2 = () => {
@@ -486,7 +502,7 @@
           if (msg) drawText(typeText(msg, 5), 40, 100, 20, '#333', 'left');
           if (s.showDinnerOptions) {
             if (f.paidSecretly) {
-              drawRect(20, 60, LOGIC_W - 40, 120, '#fff', 10); drawText("我：刚才去洗手间的时候已经结过了。", 40, 100, 20, '#333', 'left');
+              drawRect(20, 60, LOGIC_W - 40, 120, '#fff', 10); drawText(CONTENT.dinner.paidStatement, 40, 100, 20, '#333', 'left');
               if (s.billTimer > 800) transitionTo(STATE.SCENE_3_WALK);
             } else {
               const btnW = 180; drawButton(CONTENT.dinner.choicePay, (LOGIC_W - btnW)/2, 680, btnW, 50, () => { s.score = 4; transitionTo(STATE.ENDING); });

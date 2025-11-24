@@ -30,6 +30,7 @@ window.CONTENT = {
     name: "橘生✨",
     idLabel: "小红薯号：9527888",
     bio: "吃喝玩乐✨ | 摄影📷 | 分享生活",
+    backToChat: "返回聊天",
     stats: { following: "12", followers: "326", likes: "1.2k" },
     statLabels: { following: "关注", followers: "粉丝", likes: "获赞与收藏" },
     followBtn: "关注",
@@ -46,6 +47,7 @@ window.CONTENT = {
   dinner: {
     cashier: "收银台",
     paidHint: "已悄悄买单",
+    paidStatement: "我：刚才去洗手间的时候已经结过了。",
     dishEmpty: "空盘",
     dialog1: "她：今天吃得好饱呀~ 味道真不错！",
     waiterApproach: "（服务员拿着账单慢慢走过来了...）",
