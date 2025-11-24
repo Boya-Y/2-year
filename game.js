@@ -2,6 +2,15 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const fadeLayer = document.getElementById('fadeLayer');
 const tooltip = document.getElementById('tooltip');
+const BASE_W = 800, BASE_H = 600;
+const DPR = Math.max(1, Math.floor(window.devicePixelRatio || 1));
+if (DPR > 1) {
+  canvas.width = BASE_W * DPR;
+  canvas.height = BASE_H * DPR;
+  canvas.style.width = BASE_W + 'px';
+  canvas.style.height = BASE_H + 'px';
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+}
 const S = (s) => (window.GAME_CONTENT && window.GAME_CONTENT[s]) || s;
 const ASSETS = window.GAME_ASSETS || {};
 const assetImages = { avatar: null, cards: [] };

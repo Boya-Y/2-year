@@ -49,11 +49,11 @@ window.GAME_CONTENT = {
 };
 
 window.GAME_ASSETS = {
-  avatar: "./7795f23f-a151-4aa0-93e2-636dd15a5b99.png",
+  avatar: "./assets/7795f23f-a151-4aa0-93e2-636dd15a5b99.png",
   scene1Cards: [
-    "./7795f23f-a151-4aa0-93e2-636dd15a5b99.png",
-    "./35562337-65d5-487c-a631-fae7a57139fd.png",
-    "./a8d224db-895c-426c-92a0-c32c5d61125d.png",
-    "./6b2a774e-03b3-403e-be13-19778ec5fa7d.png"
+    "./assets/7795f23f-a151-4aa0-93e2-636dd15a5b99.png",
+    "./assets/35562337-65d5-487c-a631-fae7a57139fd.png",
+    "./assets/a8d224db-895c-426c-92a0-c32c5d61125d.png",
+    "./assets/6b2a774e-03b3-403e-be13-19778ec5fa7d.png"
   ]
 };
