@@ -2,6 +2,7 @@ const { useEffect, useRef } = React;
 
 const STATE = {
   MENU: 0,
+  LOADING: 12,
   SCENE_1_NOTIFICATION: 11,
   SCENE_1_CHAT: 1,
   SCENE_1_PHONE: 2,
@@ -60,7 +61,7 @@ function App() {
   const audioRef = useRef(null);
 
   const gameState = useRef({
-    current: STATE.MENU,
+    current: STATE.LOADING,
     score: 0,
     frameCount: 0,
     mouse: { x: 0, y: 0, clicked: false, down: false, lastY: 0 },
@@ -80,6 +81,7 @@ function App() {
     photo: { timer: 0, count: 0, phase: 0, flash: 0 },
     skin: { timer: 0, phase: 0, newBottleShown: false },
     notification: { timer: 0, phase: 0, slideY: 0, unlockTimer: 0 },
+    preload: { total: 0, loaded: 0 },
     flags: {
       sawMoments: false,
       paidSecretly: false,
@@ -104,14 +106,28 @@ function App() {
     const ctx = canvas.getContext('2d');
     let animationFrameId;
 
-    imagesRef.current = { me: new Image(), her: new Image(), cards: ASSETS.xhsCards.map(src => { const img = new Image(); img.decoding = 'async'; img.src = src; return img; }) };
-    imagesRef.current.me.decoding = 'async'; imagesRef.current.me.src = ASSETS.avatars.me;
-    imagesRef.current.her.decoding = 'async'; imagesRef.current.her.src = ASSETS.avatars.her;
+    imagesRef.current = { me: new Image(), her: new Image(), cards: ASSETS.xhsCards.map(() => { const img = new Image(); img.decoding = 'async'; return img; }) };
+    imagesRef.current.me.decoding = 'async';
+    imagesRef.current.her.decoding = 'async';
+
+    const assetsTotal = 1 + 2 + ASSETS.xhsCards.length;
+    gameState.current.preload.total = assetsTotal;
+    gameState.current.preload.loaded = 0;
+
+    const onAssetLoaded = () => { const s = gameState.current; s.preload.loaded = Math.min(s.preload.total, s.preload.loaded + 1); };
+    const onAssetFailed = () => { const s = gameState.current; s.preload.loaded = Math.min(s.preload.total, s.preload.loaded + 1); };
+
+    imagesRef.current.me.onload = onAssetLoaded; imagesRef.current.me.onerror = onAssetFailed; imagesRef.current.me.src = ASSETS.avatars.me;
+    imagesRef.current.her.onload = onAssetLoaded; imagesRef.current.her.onerror = onAssetFailed; imagesRef.current.her.src = ASSETS.avatars.her;
+    imagesRef.current.cards.forEach((img, i) => { img.onload = onAssetLoaded; img.onerror = onAssetFailed; img.src = ASSETS.xhsCards[i]; });
 
     audioRef.current = new Audio();
     audioRef.current.src = ASSETS.bgm;
     audioRef.current.loop = true;
-    audioRef.current.preload = 'none';
+    audioRef.current.preload = 'auto';
+    audioRef.current.addEventListener('canplaythrough', onAssetLoaded, { once: true });
+    audioRef.current.addEventListener('error', onAssetFailed, { once: true });
+    audioRef.current.load();
     const ensurePlay = () => { if (audioRef.current) audioRef.current.play().catch(() => {}); };
     window.addEventListener('mousedown', ensurePlay);
     window.addEventListener('touchstart', ensurePlay, { passive: true });
@@ -734,6 +750,17 @@ function App() {
       }
     };
 
+    const updateLoading = () => {
+      const s = gameState.current;
+      ctx.fillStyle = COLORS.bg; ctx.fillRect(0, 0, LOGIC_W, LOGIC_H);
+      const ratio = Math.min(1, s.preload.total ? s.preload.loaded / s.preload.total : 0);
+      drawText('正在加载...', LOGIC_W / 2, LOGIC_H / 2 - 40, 20, '#333');
+      const barW = 300, barH = 20, x = (LOGIC_W - barW) / 2, y = LOGIC_H / 2;
+      drawRect(x, y, barW, barH, '#eee', 10);
+      drawRect(x, y, Math.floor(barW * ratio), barH, COLORS.primary, 10);
+      if (ratio >= 1) { s.current = STATE.MENU; }
+    };
+
     const loop = () => {
       const s = gameState.current;
       s.frameCount++;
@@ -751,6 +778,7 @@ function App() {
         }
       }
       switch (s.current) {
+        case STATE.LOADING: updateLoading(); break;
         case STATE.MENU: updateMenu(); break;
         case STATE.SCENE_1_NOTIFICATION: updateScene1Notification(); break;
         case STATE.SCENE_1_CHAT: updateScene1(); break;
