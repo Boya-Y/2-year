@@ -124,8 +124,10 @@ function App() {
     audioRef.current = new Audio();
     audioRef.current.src = ASSETS.bgm;
     audioRef.current.loop = true;
-    audioRef.current.preload = 'none';
-    const ensurePlay = () => { if (audioRef.current) audioRef.current.play().catch(() => {}); };
+    audioRef.current.preload = 'auto';
+    audioRef.current.muted = true;
+    audioRef.current.play().catch(() => {});
+    const ensurePlay = () => { if (audioRef.current) { audioRef.current.muted = false; audioRef.current.play().catch(() => {}); } };
     window.addEventListener('mousedown', ensurePlay);
     window.addEventListener('touchstart', ensurePlay, { passive: true });
     window.addEventListener('keydown', ensurePlay);
