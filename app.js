@@ -35,12 +35,13 @@ const TEXT = {
   lock: { time: '20:30', date: '11月14日 星期二', faceid_unlocked: '面容ID已解锁', appIconText: '书', appName: '小红薯', notification: '橘生✨ 关注了你', now: '现在', swipe: '向上滑动解锁' },
   scene1: { chatDate: '2023.11.14', firstMsg: '99年小学老师  dd一下', inputPlaceholder: ' 说点什么...', inputCursor: ' |', opt1: '你好啊', opt1Reply: '你好你好', opt2: '同学你好，请问你叫什么名字', opt2Reply: '我叫周梦雪，你叫什么？', opt3: '同学你好漂亮，微信号也一定很好记吧', opt3Reply: '油嘴滑舌！', qrTip: '扫一扫加我', backChat: '返回聊天', headerName: '橘生✨' },
   profile: { nickname: '橘生✨', id: '小红薯号：117102336', bio: '', statsFollow: '关注', statsFans: '粉丝', statsLikes: '获赞与收藏', follow: '关注', tabsNotes: '笔记', tabsCollect: '收藏', tabsLike: '赞过', cardAuthor: '橘生✨', likePrefix: '❤ ', cards: [ { title: '‘’ 歲末將至 平安喜樂 ‘’', likes: '520', type: 'selfie' }, { title: '纯白海景房 光污染一下吧', likes: '102', type: 'food' }, { title: '成都宴满分体验💯', likes: '330', type: 'scenery' }, { title: '小猫咪有多能睡', likes: '89', type: 'food' }, { title: '求抱抱', likes: '999', type: 'selfie' } ] },
+  profile: { nickname: '橘生✨', id: '小红薯号：117102336', bio: '', statsFollow: '关注', statsFans: '粉丝', statsLikes: '获赞与收藏', follow: '关注', tabsNotes: '笔记', tabsCollect: '收藏', tabsLike: '赞过', cardAuthor: '橘生✨', likePrefix: '❤ ', followCount: '12', fansCount: '326', likesCount: '1.2k', cards: [ { title: '‘’ 歲末將至 平安喜樂 ‘’', likes: '520', type: 'selfie' }, { title: '纯白海景房 光污染一下吧', likes: '102', type: 'food' }, { title: '成都宴满分体验💯', likes: '330', type: 'scenery' }, { title: '小猫咪有多能睡', likes: '89', type: 'food' }, { title: '求抱抱', likes: '999', type: 'selfie' } ] },
   scene2: { cashier: '收银台', paidSecret: '已悄悄买单', emptyPlate: '空盘', msg1: '她：今天吃得好饱呀~味道真不错！', waiterApproach: '（服务员拿着账单慢慢走过来了...）', waiterAsk: '服务员：你好，请问这边买单吗？', buy: '我来买吧', split: '我们要AA吗？', explainPaid: '我：刚才去洗手间的时候已经结过了。' },
   scene3: { msg1: '（走在回家的路上，风突然大了起来...）', msg2: '她：嘶... 好冷啊...', should: '我应该...', coatAction: '我：（默默脱下外套披在她身上）', optAskCold: '问她：你冷吗？', optEncourage: '说：坚持一下就到了' },
   home: { lateMsg: '（不知不觉，天色渐晚，电影也快放完了...）', should: '我应该...', leave: '天色太晚了，我先回家了', sheLeaveReply: '她：好，那你路上小心。', stay: '我能在你家过夜吗？', sheAngry: '她：把我当什么人了？滚😡！', dryLips: '我：入冬了，嘴唇稍微有点干...', sheLipstick: '她：（拿起唇膏）别动，我帮你涂。' },
   date: { year: '2023', month: '11月', day: '26', boyName: '伯牙', girlName: '橘子', line1: '2023年11月26日', line2: '这是一个难以忘怀的日子。', line3: '因为——', line4: '我和我喜欢的女生在一起了', clickContinue: '点击开启婚后生活 >' },
   hair: { msg0: '（她刚洗完头从浴室出来...）', should: '我应该...', optRest: '快去吹头发，别感冒了', optBlow: '来，我给你吹头。', msg1a: '（走过去帮她吹头发...）', msg1b: '（吹风机的声音嗡嗡作响...）', msg1c: '她：我的头发好毛躁哦，不像别的那些女生那么柔顺...', optPraise: '宝宝的头发一点也不毛躁', optBad: '别的女生的头发都比你毛躁', buyAction: '我：（默默拿起手机下单了最新款吹风机）', buyResult: '我：刚才给你买了个更好的吹风机，更护发，过两天就到。', bad3: '她：哦...😐', bad4: '她：烦死了，毛躁不毛躁我不知道吗！', bad5: '她：挺好的，你还给几个妹妹吹过？🤔' },
-  photo: { msg0a: '她：镜头往上一点！', msg0b: '她：要记得把我的人框在2/3的位置哦~', msg0c: '她：开实况别忘记了！', msg0d: '她：要拍到后面的景色哦~', msg0e: '她：还有那个...', optStop: '行了行了别说了', optQuit: '再也不想出来了...', msg2a: '她：对不起嘛宝宝，马上带你去吃好吃的～', msg2b: '她：宝宝没事嘿嘿，这张拍完就不拍了...', msg3a: '她：（跑过来看照片）', msg3b: '她：宝宝你拍的也太好了呜呜呜🥹 我好爱你！' },
+  photo: { msg0a: '她：镜头往上一点！', msg0b: '她：要记得把我的人框在2/3的位置哦~', msg0c: '她：开实况别忘记了！', msg0d: '她：要拍到后面的景色哦~', msg0e: '她：还有那个...', msg1: '她：还有光线好像不太对...', optStop: '行了行了别说了', optQuit: '再也不想出来了...', msg2a: '她：对不起嘛宝宝，马上带你去吃好吃的～', msg2b: '她：宝宝没事嘿嘿，这张拍完就不拍了...', msg3a: '她：（跑过来看照片）', msg3b: '她：宝宝你拍的也太好了呜呜呜🥹 我好爱你！' },
   skin: { msg0: '（她正在给你擦护肤霜...）', should: '我应该...', optNo: '别给我擦了，我不要', optThanks: '谢谢宝宝～喜欢～', msg1a: '我：每次都是你给我擦，以后都让我给你擦。', msg1b: '（轻轻帮她擦拭脸颊...）', optComfort: '这样擦着舒服吗？', optDry: '宝宝你的皮肤有点干燥', msg2a: '我：嘿嘿，我知道你的绿宝瓶快用完了，买了新的。', msg2b: '（掏出崭新的护肤品递给她）', bad3: '她：我的护肤品都用完了你也不给我买...爱与不爱真的很明显。', bad4: '她：你好恶心，呕🤮', bad5: '她：跟我的技术相比还是有比较大的差距，菜就多练。', bad6: '她：你还知道啊？也不给我护理，爱与不爱真的很明显。' },
   ending: { congrats: '2周年快乐！', letter: ['最爱的宝宝：', '', '两周年快乐！', '感谢有你的存在，', '让我的存在也有了意义。', '我会一直一直爱你，直到永远，周梦雪', '', '爱你的老公，喻博宇。', '2023.11.26'], review: '重温我们的故事', over: '故事结束', normalTitle: '好朋友结局：好人卡', normalDesc: '你是个好人，但更适合跟她做朋友。', badTitle: '直男结局：菜狗', badDesc: '聊得明白吗你就聊。', restart: '重新开始', mistakes: { scene1: '回到 聊天', scene2: '回到 晚餐', scene3: '回到 寒夜', home: '回到 沙发', hair: '回到 吹头发', photo: '回到 拍照', skin: '回到 护肤' } }
 };
@@ -206,13 +207,13 @@ function App() {
 
     const findFirstMistake = () => {
       const f = gameState.current.flags;
-      if (!f.scene1Correct) return { state: STATE.SCENE_1_CHAT, label: "回到 聊天" };
-      if (!f.paidSecretly) return { state: STATE.SCENE_2_DINNER, label: "回到 晚餐" };
-      if (!f.gaveCoat) return { state: STATE.SCENE_3_WALK, label: "回到 寒夜" };
-      if (!f.usedLipstick) return { state: STATE.SCENE_HOME_TV, label: "回到 沙发" };
-      if (!f.scene5Correct) return { state: STATE.SCENE_5_HAIR, label: "回到 吹头发" };
-      if (!f.scene6Correct) return { state: STATE.SCENE_6_PHOTO, label: "回到 拍照" };
-      if (!f.scene7Correct) return { state: STATE.SCENE_7_SKINCARE, label: "回到 护肤" };
+      if (!f.scene1Correct) return { state: STATE.SCENE_1_CHAT, label: TEXT.ending.mistakes.scene1 };
+      if (!f.paidSecretly) return { state: STATE.SCENE_2_DINNER, label: TEXT.ending.mistakes.scene2 };
+      if (!f.gaveCoat) return { state: STATE.SCENE_3_WALK, label: TEXT.ending.mistakes.scene3 };
+      if (!f.usedLipstick) return { state: STATE.SCENE_HOME_TV, label: TEXT.ending.mistakes.home };
+      if (!f.scene5Correct) return { state: STATE.SCENE_5_HAIR, label: TEXT.ending.mistakes.hair };
+      if (!f.scene6Correct) return { state: STATE.SCENE_6_PHOTO, label: TEXT.ending.mistakes.photo };
+      if (!f.scene7Correct) return { state: STATE.SCENE_7_SKINCARE, label: TEXT.ending.mistakes.skin };
       return null;
     };
 
@@ -411,7 +412,10 @@ function App() {
             }
             }
             const waitTime = s.scene1Reply.showQR ? 480 : 180;
-            if (interactive && s.scene1Reply.timer > waitTime) { if (f.scene1Correct) { f.scene1Finished = true; transitionTo(STATE.SCENE_2_DINNER); } else { s.score = 0; transitionTo(STATE.ENDING); } }
+            if (interactive && s.scene1Reply.timer > waitTime) {
+              if (f.scene1Correct) { f.scene1Finished = true; transitionTo(STATE.SCENE_2_DINNER); }
+              else { transitionTo(STATE.ENDING); }
+            }
             return;
         }
         const inputY = LOGIC_H - 70; drawRect(0, LOGIC_H - 80, LOGIC_W, 80, '#fff'); ctx.strokeStyle = COLORS.line_gray; ctx.beginPath(); ctx.moveTo(0, LOGIC_H - 80); ctx.lineTo(LOGIC_W, LOGIC_H - 80); ctx.stroke();
@@ -434,7 +438,7 @@ function App() {
         const grad = ctx.createLinearGradient(0, 0, 0, 200); grad.addColorStop(0, '#ffdde1'); grad.addColorStop(1, '#ee9ca7'); ctx.fillStyle = grad; ctx.fillRect(0, 0, LOGIC_W, 200);
         const infoY = 160; const rBig = 38; ctx.save(); ctx.beginPath(); ctx.arc(50, infoY, rBig, 0, Math.PI*2); ctx.clip(); const herImg = imagesRef.current.her; if (herImg && herImg.complete) { ctx.drawImage(herImg, 50 - rBig, infoY - rBig, rBig*2, rBig*2); } else { ctx.fillStyle = '#ffe4e1'; ctx.fillRect(50 - rBig, infoY - rBig, rBig*2, rBig*2); } ctx.restore();
         drawText(TEXT.profile.nickname, 110, infoY + 15, 20, '#333', 'left'); drawText(TEXT.profile.id, 110, infoY + 35, 12, '#999', 'left'); drawText(TEXT.profile.bio, 20, infoY + 70, 14, '#333', 'left');
-        const statsY = infoY + 100; drawText("12", 30, statsY, 16, '#333'); drawText(TEXT.profile.statsFollow, 30, statsY + 20, 12, '#999'); drawText("326", 90, statsY, 16, '#333'); drawText(TEXT.profile.statsFans, 90, statsY + 20, 12, '#999'); drawText("1.2k", 160, statsY, 16, '#333'); drawText(TEXT.profile.statsLikes, 170, statsY + 20, 12, '#999');
+        const statsY = infoY + 100; drawText(TEXT.profile.followCount, 30, statsY, 16, '#333'); drawText(TEXT.profile.statsFollow, 30, statsY + 20, 12, '#999'); drawText(TEXT.profile.fansCount, 90, statsY, 16, '#333'); drawText(TEXT.profile.statsFans, 90, statsY + 20, 12, '#999'); drawText(TEXT.profile.likesCount, 160, statsY, 16, '#333'); drawText(TEXT.profile.statsLikes, 170, statsY + 20, 12, '#999');
         drawRect(LOGIC_W - 120, infoY + 10, 80, 30, COLORS.xhs_red, 15); drawText(TEXT.profile.follow, LOGIC_W - 80, infoY + 30, 14, '#fff');
         const tabY = statsY + 40; drawText(TEXT.profile.tabsNotes, 60, tabY, 16, '#333'); drawRect(45, tabY + 10, 30, 2, COLORS.xhs_red); drawText(TEXT.profile.tabsCollect, 150, tabY, 16, '#999'); drawText(TEXT.profile.tabsLike, 240, tabY, 16, '#999'); ctx.strokeStyle = '#f0f0f0'; ctx.beginPath(); ctx.moveTo(0, tabY+15); ctx.lineTo(LOGIC_W, tabY+15); ctx.stroke();
         const contentY = tabY + 30; const cardW = (LOGIC_W - 40) / 2, gap = 10;
@@ -474,29 +478,29 @@ function App() {
         if (isHover(LOGIC_W - 150, 100, 150, 200)) { f.paidSecretly = true; s.score += 2; s.mouse.clicked = false; s.paymentFeedbackTimer = 90; return; }
       }
       ctx.fillStyle = '#fff8dc'; ctx.fillRect(0, 0, LOGIC_W, LOGIC_H);
-      ctx.fillStyle = '#d2b48c'; ctx.fillRect(LOGIC_W - 150, 150, 150, 100); drawText("收银台", LOGIC_W - 75, 200, 16, '#fff');
+      ctx.fillStyle = '#d2b48c'; ctx.fillRect(LOGIC_W - 150, 150, 150, 100); drawText(TEXT.scene2.cashier, LOGIC_W - 75, 200, 16, '#fff');
       if (!f.paidSecretly && !s.showDinnerOptions && s.frameCount % 60 < 30) drawCircle(LOGIC_W - 75, 140, 5, COLORS.primary);
       if (f.paidSecretly) drawText("✔", LOGIC_W - 75, 140, 20, 'green');
-      if (s.paymentFeedbackTimer > 0) { s.paymentFeedbackTimer--; ctx.fillStyle = COLORS.highlight; ctx.globalAlpha = 0.8; ctx.fillRect(LOGIC_W - 150, 150, 150, 100); ctx.globalAlpha = 1.0; drawText("已悄悄买单", LOGIC_W / 2, 280, 20, COLORS.primary); }
+      if (s.paymentFeedbackTimer > 0) { s.paymentFeedbackTimer--; ctx.fillStyle = COLORS.highlight; ctx.globalAlpha = 0.8; ctx.fillRect(LOGIC_W - 150, 150, 150, 100); ctx.globalAlpha = 1.0; drawText(TEXT.scene2.paidSecret, LOGIC_W / 2, 280, 20, COLORS.primary); }
       const boyX = LOGIC_W * 0.3, girlX = LOGIC_W * 0.7, charY = 450; drawBean(boyX, charY, false); drawBean(girlX, charY, true);
-      drawRect(20, 500, LOGIC_W - 40, 150, '#8b4513', 10); drawCircle(LOGIC_W * 0.3, 530, 30, '#ddd'); drawCircle(LOGIC_W * 0.7, 530, 30, '#ddd'); drawText("空盘", LOGIC_W * 0.3, 535, 12, '#aaa');
+      drawRect(20, 500, LOGIC_W - 40, 150, '#8b4513', 10); drawCircle(LOGIC_W * 0.3, 530, 30, '#ddd'); drawCircle(LOGIC_W * 0.7, 530, 30, '#ddd'); drawText(TEXT.scene2.emptyPlate, LOGIC_W * 0.3, 535, 12, '#aaa');
       drawRect(20, 60, LOGIC_W - 40, 120, '#fff', 10); ctx.strokeStyle = '#333'; ctx.lineWidth = 2; ctx.strokeRect(20, 60, LOGIC_W - 40, 120);
       s.billTimer++;
       let msg = "";
-      if (s.billTimer < 120) msg = ""; else if (s.billTimer < 360) msg = "她：今天吃得好饱呀~ 味道真不错！";
+      if (s.billTimer < 120) msg = ""; else if (s.billTimer < 360) msg = TEXT.scene2.msg1;
       else if (s.billTimer < 600) {
-        msg = "（服务员拿着账单慢慢走过来了...）";
+        msg = TEXT.scene2.waiterApproach;
         let wX = (LOGIC_W + 100) - (s.billTimer - 360) * 1.5; if (wX < LOGIC_W - 80) wX = LOGIC_W - 80;
         s.waiterX = wX; drawBean(wX, 350, false, 'normal', 0.8); drawRect(wX - 12, 365, 24, 30, '#fff', 2);
-      } else { msg = "服务员：你好，请问这边买单吗？"; s.showDinnerOptions = true; }
+      } else { msg = TEXT.scene2.waiterAsk; s.showDinnerOptions = true; }
       if (msg) drawText(typeText(msg, 5), 40, 100, 20, '#333', 'left');
       if (s.showDinnerOptions) {
         if (f.paidSecretly) {
-          drawRect(20, 60, LOGIC_W - 40, 120, '#fff', 10); drawText("我：刚才去洗手间的时候已经结过了。", 40, 100, 20, '#333', 'left');
+          drawRect(20, 60, LOGIC_W - 40, 120, '#fff', 10); drawText(TEXT.scene2.explainPaid, 40, 100, 20, '#333', 'left');
           if (s.billTimer > 800) transitionTo(STATE.SCENE_3_WALK);
         } else {
-          const btnW = 180; drawButton("我来买吧", (LOGIC_W - btnW)/2, 680, btnW, 50, () => { s.score = 4; transitionTo(STATE.ENDING); });
-          drawButton("我们要AA吗？", (LOGIC_W - btnW)/2, 740, btnW, 50, () => { s.score = 0; transitionTo(STATE.ENDING); });
+          const btnW = 180; drawButton(TEXT.scene2.buy, (LOGIC_W - btnW)/2, 680, btnW, 50, () => { s.score = 4; transitionTo(STATE.ENDING); });
+          drawButton(TEXT.scene2.split, (LOGIC_W - btnW)/2, 740, btnW, 50, () => { s.score = 0; transitionTo(STATE.ENDING); });
         }
       }
     };
@@ -510,11 +514,11 @@ function App() {
       if (isHover(centerX - 80, charY, 60, 100) && !f.gaveCoat && s.walkTimer > 100) { coatColor = '#9b59b6'; canvas.style.cursor = 'pointer'; if (s.mouse.clicked) { f.gaveCoat = true; s.mouse.clicked = false; s.score += 2; s.coatClickTime = s.walkTimer; } }
       if (!f.gaveCoat) { ctx.fillStyle = coatColor; ctx.beginPath(); ctx.ellipse(centerX - 50, charY + 50, 25, 45, 0, 0, Math.PI*2); ctx.fill(); } else { ctx.fillStyle = '#bdc3c7'; ctx.beginPath(); ctx.ellipse(centerX - 50, charY + 50, 20, 40, 0, 0, Math.PI*2); ctx.fill(); ctx.fillStyle = coatColor; ctx.beginPath(); ctx.ellipse(centerX + 50 + shake, charY + 55, 28, 48, 0, 0, Math.PI*2); ctx.fill(); }
       drawRect(20, 60, LOGIC_W - 40, 120, '#fff', 10); s.walkTimer++;
-      let msg = ""; if (s.walkTimer < 180) msg = "（走在回家的路上，风突然大了起来...）"; else if (s.walkTimer < 420) msg = "她：嘶... 好冷啊..."; else if (!f.gaveCoat) msg = "我应该..."; else msg = "我：（默默脱下外套披在她身上）";
+      let msg = ""; if (s.walkTimer < 180) msg = TEXT.scene3.msg1; else if (s.walkTimer < 420) msg = TEXT.scene3.msg2; else if (!f.gaveCoat) msg = TEXT.scene3.should; else msg = TEXT.scene3.coatAction;
       drawText(typeText(msg, 5), 40, 100, 20, '#333', 'left');
       if (s.walkTimer >= 420 && !f.gaveCoat) {
-        const btnW = 220; drawButton("问她：你冷吗？", (LOGIC_W - btnW)/2, 650, btnW, 50, () => { s.score = 4; transitionTo(STATE.ENDING); });
-        drawButton("说：坚持一下就到了", (LOGIC_W - btnW)/2, 710, btnW, 50, () => { s.score = 0; transitionTo(STATE.ENDING); });
+        const btnW = 220; drawButton(TEXT.scene3.optAskCold, (LOGIC_W - btnW)/2, 650, btnW, 50, () => { s.score = 4; transitionTo(STATE.ENDING); });
+        drawButton(TEXT.scene3.optEncourage, (LOGIC_W - btnW)/2, 710, btnW, 50, () => { s.score = 0; transitionTo(STATE.ENDING); });
       } else if (f.gaveCoat) { if (s.walkTimer > s.coatClickTime + 250) { transitionTo(STATE.SCENE_HOME_TV); } }
     };
 
@@ -531,12 +535,12 @@ function App() {
         drawRect(20, 60, LOGIC_W - 40, 120, '#fff', 10); ctx.strokeStyle = '#333'; ctx.lineWidth = 2; ctx.strokeRect(20, 60, LOGIC_W - 40, 120);
         let msg = "";
         if (h.reaction.active) { msg = h.reaction.text; h.reaction.timer++; if (h.reaction.timer > 180) transitionTo(STATE.ENDING); }
-        else if (f.usedLipstick) { let dt = h.timer - h.lipstickClickFrame; if (dt < 150) msg = "我：入冬了，嘴唇稍微有点干..."; else { msg = "她：（拿起唇膏）别动，我帮你涂。"; ctx.save(); ctx.translate(LOGIC_W / 2, 300); ctx.scale(1 + Math.sin(s.frameCount*0.1)*0.2, 1 + Math.sin(s.frameCount*0.1)*0.2); drawText("❤", 0, 0, 50, COLORS.primary); ctx.restore(); } if (dt > 360) transitionTo(STATE.SCENE_4_DATE); }
-        else { if (h.timer < 180) msg = "（不知不觉，天色渐晚，电影也快放完了...）"; else if (h.timer > 300) { msg = "我应该..."; h.showOptions = true; } }
+        else if (f.usedLipstick) { let dt = h.timer - h.lipstickClickFrame; if (dt < 150) msg = TEXT.home.dryLips; else { msg = TEXT.home.sheLipstick; ctx.save(); ctx.translate(LOGIC_W / 2, 300); ctx.scale(1 + Math.sin(s.frameCount*0.1)*0.2, 1 + Math.sin(s.frameCount*0.1)*0.2); drawText("❤", 0, 0, 50, COLORS.primary); ctx.restore(); } if (dt > 360) transitionTo(STATE.SCENE_4_DATE); }
+        else { if (h.timer < 180) msg = TEXT.home.lateMsg; else if (h.timer > 300) { msg = TEXT.home.should; h.showOptions = true; } }
         drawText(typeText(msg, 5), 40, 100, 20, h.reaction.active && h.reaction.color === 'red' ? 'red' : '#333', 'left');
         if (h.showOptions && !f.usedLipstick && !h.reaction.active) {
-          const btnW = 240; drawButton("天色太晚了，我先回家了", (LOGIC_W - btnW)/2, 680, btnW, 50, () => { h.reaction = { active: true, text: "她：好，那你路上小心。", color: "#333", timer: 0 }; s.score = 4; });
-          drawButton("我能在你家过夜吗？", (LOGIC_W - btnW)/2, 740, btnW, 50, () => { h.reaction = { active: true, text: "她：滚😡！", color: "red", timer: 0 }; s.score = 0; });
+          const btnW = 240; drawButton(TEXT.home.leave, (LOGIC_W - btnW)/2, 680, btnW, 50, () => { h.reaction = { active: true, text: TEXT.home.sheLeaveReply, color: "#333", timer: 0 }; s.score = 4; });
+          drawButton(TEXT.home.stay, (LOGIC_W - btnW)/2, 740, btnW, 50, () => { h.reaction = { active: true, text: TEXT.home.sheAngry, color: "red", timer: 0 }; s.score = 0; });
         }
     };
 
@@ -547,21 +551,21 @@ function App() {
         ctx.shadowBlur = 15; ctx.shadowColor = 'rgba(0,0,0,0.1)'; drawRect(calX, calY, calW, calH, '#fff', 10); ctx.shadowBlur = 0;
         drawRect(calX, calY, calW, 60, '#e74c3c', 10); ctx.fillRect(calX, calY + 40, calW, 20);
         drawCircle(calX + 40, calY + 30, 8, '#333'); drawCircle(calX + 200, calY + 30, 8, '#333');
-        drawText("2023", LOGIC_W / 2, calY + 38, 24, '#fff', 'center');
-        drawText("11月", calX + calW/2, calY + 120, 40, '#333'); drawText("26", calX + calW/2, calY + 220, 80, '#e74c3c', 'center', 'Arial');
+        drawText(TEXT.date.year, LOGIC_W / 2, calY + 38, 24, '#fff', 'center');
+        drawText(TEXT.date.month, calX + calW/2, calY + 120, 40, '#333'); drawText(TEXT.date.day, calX + calW/2, calY + 220, 80, '#e74c3c', 'center', 'Arial');
         const boyX = LOGIC_W/2 - 60, girlX = LOGIC_W/2 + 60, charY = 540; let slide = Math.max(0, 50 - dt * 0.5);
-        drawBean(boyX - slide, charY, false); drawText("伯牙", boyX - slide, charY - 65, 14, '#333');
-        drawBean(girlX + slide, charY, true, 'normal', 1, true); drawText("橘子", girlX + slide, charY - 65, 14, '#333');
+        drawBean(boyX - slide, charY, false); drawText(TEXT.date.boyName, boyX - slide, charY - 65, 14, '#333');
+        drawBean(girlX + slide, charY, true, 'normal', 1, true); drawText(TEXT.date.girlName, girlX + slide, charY - 65, 14, '#333');
         if (dt > 100) {
           let scale = 1 + Math.sin(dt * 0.05) * 0.1; ctx.save(); ctx.translate(LOGIC_W/2, 500); ctx.scale(scale, scale); drawText("❤", 0, 0, 40, '#ff6b81'); ctx.restore();
           let alpha = Math.min(1, (dt - 100) / 60); ctx.globalAlpha = alpha;
-          if (s.date.phase === 0) { drawText("2023年11月26日", LOGIC_W/2, 680, 24, '#333'); drawText("这是一个难以忘怀的日子。", LOGIC_W/2, 720, 18, '#666'); }
-          else { drawText("因为——", LOGIC_W/2, 680, 24, '#333'); drawText("我和我喜欢的女生在一起了", LOGIC_W/2, 720, 18, '#666'); }
+          if (s.date.phase === 0) { drawText(TEXT.date.line1, LOGIC_W/2, 680, 24, '#333'); drawText(TEXT.date.line2, LOGIC_W/2, 720, 18, '#666'); }
+          else { drawText(TEXT.date.line3, LOGIC_W/2, 680, 24, '#333'); drawText(TEXT.date.line4, LOGIC_W/2, 720, 18, '#666'); }
           ctx.globalAlpha = 1.0;
         }
         if (dt > 200) {
           if (s.mouse.clicked) { s.mouse.clicked = false; if(s.date.phase===0) s.date.phase=1; else transitionTo(STATE.SCENE_5_HAIR); }
-          if (Math.floor(dt / 30) % 2 === 0) drawText("点击继续 >", LOGIC_W - 80, LOGIC_H - 50, 16, '#aaa');
+          if (Math.floor(dt / 30) % 2 === 0) drawText(TEXT.date.clickContinue, LOGIC_W - 80, LOGIC_H - 50, 16, '#aaa');
         }
     };
 
@@ -583,17 +587,17 @@ function App() {
       drawRect(20, 60, LOGIC_W - 40, 120, '#fff', 10); ctx.strokeStyle = '#333'; ctx.lineWidth = 2; ctx.strokeRect(20, 60, LOGIC_W - 40, 120);
       let msg = "";
       if (h.phase === 0) {
-        if (h.timer < 120) msg = "（她刚洗完头从浴室出来...）"; else { msg = "我应该..."; if (h.timer > 120) { drawButton("赶紧上床吧，别感冒了", (LOGIC_W-350)/2, 680, 350, 40, () => { h.phase = 3; h.timer = 0; s.score = 0; }); drawButton("来，我给你吹头。", (LOGIC_W-350)/2, 730, 350, 40, () => { h.phase = 1; h.timer = 0; }); } }
+        if (h.timer < 120) msg = TEXT.hair.msg0; else { msg = TEXT.hair.should; if (h.timer > 120) { drawButton(TEXT.hair.optRest, (LOGIC_W-350)/2, 680, 350, 40, () => { h.phase = 3; h.timer = 0; s.score = 0; }); drawButton(TEXT.hair.optBlow, (LOGIC_W-350)/2, 730, 350, 40, () => { h.phase = 1; h.timer = 0; }); } }
       } else if (h.phase === 1) {
-        if (h.timer < 120) msg = "（走过去帮她吹头发...）"; else if (h.timer < 200) msg = "（吹风机的声音嗡嗡作响...）"; else {
-          msg = "她：我的头发好毛躁哦，不像别的那些女生...";
-          if (!h.dryerBought) { drawButton("宝宝的头发一点也不毛躁", (LOGIC_W-350)/2, 680, 350, 40, () => { h.phase = 4; h.timer = 0; s.score = 4; }); drawButton("别的女生的头发都比你毛躁", (LOGIC_W-350)/2, 730, 350, 40, () => { h.phase = 5; h.timer = 0; s.score = 0; }); }
+        if (h.timer < 120) msg = TEXT.hair.msg1a; else if (h.timer < 200) msg = TEXT.hair.msg1b; else {
+          msg = TEXT.hair.msg1c;
+          if (!h.dryerBought) { drawButton(TEXT.hair.optPraise, (LOGIC_W-350)/2, 680, 350, 40, () => { h.phase = 4; h.timer = 0; s.score = 4; }); drawButton(TEXT.hair.optBad, (LOGIC_W-350)/2, 730, 350, 40, () => { h.phase = 5; h.timer = 0; s.score = 0; }); }
         }
       } else if (h.phase === 2) {
-        if (h.timer < 150) msg = "我：（默默拿起手机下单了最新款吹风机）"; else { msg = "我：刚才给你买了个更好的吹风机，过两天就到。"; ctx.save(); ctx.translate(400, 300); ctx.scale(1.5, 1.5); drawText("❤", 0, 0, 50, COLORS.primary); ctx.restore(); if (h.timer > 400) transitionTo(STATE.SCENE_6_PHOTO); }
-      } else if (h.phase === 3) { msg = "她：哦...😐"; if (h.timer > 150) transitionTo(STATE.ENDING); }
-      else if (h.phase === 4) { msg = "她：烦死了，毛躁不毛躁我不知道吗！"; if (h.timer > 150) transitionTo(STATE.ENDING); }
-      else if (h.phase === 5) { msg = "她：挺好的，你还给几个妹妹吹过？🤔"; if (h.timer > 150) transitionTo(STATE.ENDING); }
+        if (h.timer < 150) msg = TEXT.hair.buyAction; else { msg = TEXT.hair.buyResult; ctx.save(); ctx.translate(400, 300); ctx.scale(1.5, 1.5); drawText("❤", 0, 0, 50, COLORS.primary); ctx.restore(); if (h.timer > 400) transitionTo(STATE.SCENE_6_PHOTO); }
+      } else if (h.phase === 3) { msg = TEXT.hair.bad3; if (h.timer > 150) transitionTo(STATE.ENDING); }
+      else if (h.phase === 4) { msg = TEXT.hair.bad4; if (h.timer > 150) transitionTo(STATE.ENDING); }
+      else if (h.phase === 5) { msg = TEXT.hair.bad5; if (h.timer > 150) transitionTo(STATE.ENDING); }
       drawParagraph(typeText(msg, 5), 40, 100, 370, 26, 20, '#333', 'left');
     };
 
@@ -613,15 +617,15 @@ function App() {
       let msg = "", textColor = '#fff';
       if (p.phase === 0) {
         textColor = '#fff';
-        if (p.timer < 180) msg = "她：镜头往上一点！"; else if (p.timer < 360) msg = "她：要记得把我的人框在2/3的位置哦~"; else if (p.timer < 540) msg = "她：开实况别忘记了！"; else if (p.timer < 720) msg = "她：要拍到后面的景色哦~"; else { msg = "她：还有那个..."; p.phase = 1; }
+        if (p.timer < 180) msg = TEXT.photo.msg0a; else if (p.timer < 360) msg = TEXT.photo.msg0b; else if (p.timer < 540) msg = TEXT.photo.msg0c; else if (p.timer < 720) msg = TEXT.photo.msg0d; else { msg = TEXT.photo.msg0e; p.phase = 1; }
       } else if (p.phase === 1) {
-        msg = "她：还有光线好像不太对..."; textColor = '#fff'; drawButton("行了行了别说了", (LOGIC_W-250)/2, 300, 250, 50, () => { p.phase = 2; p.timer = 0; f.failReason = 1; s.score = 4; }); drawButton("再也不想出来了...", (LOGIC_W-250)/2, 370, 250, 50, () => { p.phase = 2; p.timer = 0; f.failReason = 2; s.score = 0; });
+        msg = TEXT.photo.msg1; textColor = '#fff'; drawButton(TEXT.photo.optStop, (LOGIC_W-250)/2, 300, 250, 50, () => { p.phase = 2; p.timer = 0; f.failReason = 1; s.score = 4; }); drawButton(TEXT.photo.optQuit, (LOGIC_W-250)/2, 370, 250, 50, () => { p.phase = 2; p.timer = 0; f.failReason = 2; s.score = 0; });
       } else if (p.phase === 2) {
-        textColor = '#333'; if (f.failReason === 1) msg = "她：对不起嘛宝宝，马上带你去吃好吃的～"; else msg = "她：宝宝没事嘿嘿，这张拍完就不拍了...";
+        textColor = '#333'; if (f.failReason === 1) msg = TEXT.photo.msg2a; else msg = TEXT.photo.msg2b;
         if (p.timer > 50) { ctx.save(); ctx.translate(LOGIC_W/2, 300); ctx.scale(2, 2); drawBean(0, 0, true, 'normal', 1, true); ctx.restore(); }
         if (p.timer > 200) transitionTo(STATE.ENDING);
       } else if (p.phase === 3) {
-        textColor = '#333'; if (p.timer < 100) { msg = "她：（跑过来看照片）"; ctx.save(); ctx.translate(LOGIC_W/2, 300); ctx.scale(2, 2); drawBean(0, 0, true, 'happy', 1, true); ctx.restore(); } else { msg = "她：宝宝你拍的也太好了呜呜呜🥹 我好爱你！"; ctx.save(); ctx.translate(LOGIC_W/2, 200); ctx.scale(1.5, 1.5); drawText("❤", 0, 0, 50, COLORS.primary); ctx.restore(); if (p.timer > 300) { f.scene6Correct = true; s.score += 2; transitionTo(STATE.SCENE_7_SKINCARE); } }
+        textColor = '#333'; if (p.timer < 100) { msg = TEXT.photo.msg3a; ctx.save(); ctx.translate(LOGIC_W/2, 300); ctx.scale(2, 2); drawBean(0, 0, true, 'happy', 1, true); ctx.restore(); } else { msg = TEXT.photo.msg3b; ctx.save(); ctx.translate(LOGIC_W/2, 200); ctx.scale(1.5, 1.5); drawText("❤", 0, 0, 50, COLORS.primary); ctx.restore(); if (p.timer > 300) { f.scene6Correct = true; s.score += 2; transitionTo(STATE.SCENE_7_SKINCARE); } }
       }
       if (p.phase >= 2) drawParagraph(typeText(msg, 5), 40, 100, 370, 26, 18, textColor, 'left'); else drawText(typeText(msg, 5), LOGIC_W/2, 100, 18, textColor);
     };
@@ -652,27 +656,27 @@ function App() {
       drawRect(20, 60, LOGIC_W - 40, 120, '#fff', 10); ctx.strokeStyle = '#333'; ctx.lineWidth = 2; ctx.strokeRect(20, 60, LOGIC_W - 40, 120);
       let msg = "";
       if (k.phase === 0) {
-        if (k.timer < 120) msg = "（她正在给你擦护肤霜...）"; else {
-          msg = "我应该...";
-          drawButton("别给我擦了，我不要", (LOGIC_W-280)/2, 680, 280, 40, () => { k.phase = 1; k.timer = 0; });
-          drawButton("谢谢宝宝～喜欢～", (LOGIC_W-280)/2, 730, 280, 40, () => { k.phase = 4; k.timer = 0; s.score = 0; });
+        if (k.timer < 120) msg = TEXT.skin.msg0; else {
+          msg = TEXT.skin.should;
+          drawButton(TEXT.skin.optNo, (LOGIC_W-280)/2, 680, 280, 40, () => { k.phase = 1; k.timer = 0; });
+          drawButton(TEXT.skin.optThanks, (LOGIC_W-280)/2, 730, 280, 40, () => { k.phase = 4; k.timer = 0; s.score = 0; });
         }
       } else if (k.phase === 1) {
-        if (k.timer < 150) msg = "我：每次都是你给我擦，以后都让我给你擦。"; else {
-          msg = "（轻轻帮她擦拭脸颊...）";
-          drawButton("这样擦着舒服吗？", (LOGIC_W-280)/2, 680, 280, 40, () => { k.phase = 5; k.timer = 0; s.score = 4; });
-          drawButton("宝宝你的皮肤好干燥", (LOGIC_W-280)/2, 730, 280, 40, () => { k.phase = 6; k.timer = 0; s.score = 0; });
+        if (k.timer < 150) msg = TEXT.skin.msg1a; else {
+          msg = TEXT.skin.msg1b;
+          drawButton(TEXT.skin.optComfort, (LOGIC_W-280)/2, 680, 280, 40, () => { k.phase = 5; k.timer = 0; s.score = 4; });
+          drawButton(TEXT.skin.optDry, (LOGIC_W-280)/2, 730, 280, 40, () => { k.phase = 6; k.timer = 0; s.score = 0; });
         }
       } else if (k.phase === 2) {
-        if (k.timer < 150) msg = "我：嘿嘿，我知道你的绿宝瓶快用完了，买了新的。"; else {
-          msg = "（掏出崭新的护肤品递给她）";
+        if (k.timer < 150) msg = TEXT.skin.msg2a; else {
+          msg = TEXT.skin.msg2b;
           if (!k.newBottleShown) { ctx.fillStyle = '#2ecc71'; drawRect(200, 250, 60, 80, '#2ecc71', 5); ctx.fillStyle = '#f1c40f'; drawCircle(230, 270, 15, '#f1c40f'); }
           if (k.timer > 300) transitionTo(STATE.ENDING);
         }
-      } else if (k.phase === 3) { msg = "她：我的护肤品都用完了你也不给我买..."; if (k.timer > 150) transitionTo(STATE.ENDING); }
-      else if (k.phase === 4) { msg = "她：你好恶心🤮"; if (k.timer > 100) transitionTo(STATE.ENDING); }
-      else if (k.phase === 5) { msg = "她：还行吧，跟我的技术相比还是有差距。"; if (k.timer > 150) transitionTo(STATE.ENDING); }
-      else if (k.phase === 6) { msg = "她：你还知道啊？爱与不爱真的很明显。"; if (k.timer > 150) transitionTo(STATE.ENDING); }
+      } else if (k.phase === 3) { msg = TEXT.skin.bad3; if (k.timer > 150) transitionTo(STATE.ENDING); }
+      else if (k.phase === 4) { msg = TEXT.skin.bad4; if (k.timer > 100) transitionTo(STATE.ENDING); }
+      else if (k.phase === 5) { msg = TEXT.skin.bad5; if (k.timer > 150) transitionTo(STATE.ENDING); }
+      else if (k.phase === 6) { msg = TEXT.skin.bad6; if (k.timer > 150) transitionTo(STATE.ENDING); }
       drawParagraph(typeText(msg, 5), 40, 100, 370, 26, 18, '#333', 'left');
     };
 
@@ -689,18 +693,11 @@ function App() {
             ctx.save(); ctx.translate(x, y); ctx.globalAlpha = 0.3; drawText("❤", 0, 0, size, '#fff'); ctx.restore();
         }
         ctx.globalAlpha = 1.0;
-        drawText("2周年快乐！", LOGIC_W / 2, 120, 48, '#fff', 'center', 'Arial');
+        drawText(TEXT.ending.congrats, LOGIC_W / 2, 120, 48, '#fff', 'center', 'Arial');
         const centerX = LOGIC_W / 2, charY = 250;
         drawBean(centerX - 35, charY, false, 'happy', 1.2); drawBean(centerX + 35, charY, true, 'happy', 1.2, true);
         ctx.save(); ctx.translate(centerX, charY - 80); const beat = 1 + Math.sin(s.frameCount * 0.1) * 0.1; ctx.scale(beat, beat); drawText("❤", 0, 0, 60, '#ff2442'); ctx.restore();
-        const lines = [
-            "亲爱的橘子：", "",
-            "两周年快乐！",
-            "谢谢你这两年的包容与陪伴。",
-            "未来的每一个春夏秋冬，",
-            "我都想和你一起度过。", "",
-            "爱你的 伯牙", "2023.11.26"
-        ];
+        const lines = TEXT.ending.letter;
         let startY = 380;
         lines.forEach((line, i) => {
             if (s.frameCount > i * 20) {
@@ -710,18 +707,18 @@ function App() {
         });
         ctx.globalAlpha = 1.0;
         if (s.frameCount > lines.length * 20 + 60) {
-            drawButton("重温我们的故事", (LOGIC_W - 240)/2, 720, 240, 50, () => { transitionTo(STATE.SCENE_1_NOTIFICATION, false, resetGame); }, '#ff6b81');
+            drawButton(TEXT.ending.review, (LOGIC_W - 240)/2, 720, 240, 50, () => { transitionTo(STATE.SCENE_1_NOTIFICATION, false, resetGame); }, '#ff6b81');
         }
       } else {
-        drawText("故事结束", LOGIC_W / 2, 200, 40, '#333');
+        drawText(TEXT.ending.over, LOGIC_W / 2, 200, 40, '#333');
         const mistake = findFirstMistake();
         if (mistake) {
           drawButton(mistake.label, (LOGIC_W - 200)/2, 600, 200, 50, () => { retryFromMistake(mistake.state); }, "#3498db");
         }
-        if (s.score >= 4) { title = "普通结局：好人卡"; desc = "你是个好人，但可能还不够懂她。"; color = "#f39c12"; drawText("😐", LOGIC_W / 2, 400, 60, "#333"); }
-        else { title = "坏结局：钢铁直男"; desc = "有些机会错过了，就真的错过了。"; color = "#7f8c8d"; drawText("💔", LOGIC_W / 2, 400, 60, "#7f8c8d"); }
+        if (s.score >= 4) { title = TEXT.ending.normalTitle; desc = TEXT.ending.normalDesc; color = "#f39c12"; drawText("😐", LOGIC_W / 2, 400, 60, "#333"); }
+        else { title = TEXT.ending.badTitle; desc = TEXT.ending.badDesc; color = "#7f8c8d"; drawText("💔", LOGIC_W / 2, 400, 60, "#7f8c8d"); }
         drawText(title, LOGIC_W / 2, 300, 24, color); drawText(desc, LOGIC_W / 2, 340, 14, '#555');
-        drawButton("重新开始", (LOGIC_W - 200)/2, 670, 200, 50, () => { transitionTo(STATE.SCENE_1_NOTIFICATION, false, resetGame); });
+        drawButton(TEXT.ending.restart, (LOGIC_W - 200)/2, 670, 200, 50, () => { transitionTo(STATE.SCENE_1_NOTIFICATION, false, resetGame); });
       }
     };
 
