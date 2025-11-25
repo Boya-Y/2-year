@@ -110,7 +110,7 @@ function App() {
     imagesRef.current.me.decoding = 'async';
     imagesRef.current.her.decoding = 'async';
 
-    const assetsTotal = 2;
+    const assetsTotal = 2 + ASSETS.xhsCards.length;
     gameState.current.preload.total = assetsTotal;
     gameState.current.preload.loaded = 0;
 
@@ -119,7 +119,7 @@ function App() {
 
     imagesRef.current.me.onload = onAssetLoaded; imagesRef.current.me.onerror = onAssetFailed; imagesRef.current.me.src = ASSETS.avatars.me;
     imagesRef.current.her.onload = onAssetLoaded; imagesRef.current.her.onerror = onAssetFailed; imagesRef.current.her.src = ASSETS.avatars.her;
-    imagesRef.current.cards.forEach((img, i) => { img.src = ASSETS.xhsCards[i]; });
+    imagesRef.current.cards.forEach((img, i) => { img.onload = onAssetLoaded; img.onerror = onAssetFailed; img.src = ASSETS.xhsCards[i]; });
 
     audioRef.current = new Audio();
     audioRef.current.src = ASSETS.bgm;
