@@ -410,7 +410,7 @@ function App() {
                 drawText(TEXT.scene1.qrTip, 130, qrY + 140, 12, '#999');
             }
             }
-            const waitTime = s.scene1Reply.showQR ? 680 : 180;
+            const waitTime = s.scene1Reply.showQR ? 480 : 180;
             if (interactive && s.scene1Reply.timer > waitTime) { if (f.scene1Correct) { f.scene1Finished = true; transitionTo(STATE.SCENE_2_DINNER); } else { s.score = 0; transitionTo(STATE.ENDING); } }
             return;
         }
