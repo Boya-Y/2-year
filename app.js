@@ -46,10 +46,11 @@ const TEXT = {
   skin: { msg0: '（她正在给你擦护肤霜...）', should: '我应该...', optNo: '别给我擦了，我不要', optThanks: '谢谢宝宝～喜欢～', msg1a: '我：每次都是你给我擦，以后都让我给你擦。', msg1b: '（轻轻帮她擦拭脸颊...）', optComfort: '这样擦着舒服吗？', optDry: '宝宝你的皮肤有点干燥', msg2a: '我：嘿嘿，我知道你的绿宝瓶快用完了，买了新的。', msg2b: '（掏出崭新的护肤品递给她）', bad3: '她：我的护肤品都用完了你也不给我买...爱与不爱真的很明显。', bad4: '她：你好恶心，呕🤮', bad5: '她：跟我的技术相比还是有比较大的差距，菜就多练。', bad6: '她：你还知道啊？也不给我护理，爱与不爱真的很明显。' },
   ending: { congrats: '2周年快乐！', letter: ['最爱的宝宝：', '', '两周年快乐！', '感谢有你的存在，', '让我的存在也有了意义。', '我会一直一直爱你，直到永远，周梦雪', '', '爱你的老公，喻博宇。', '2023.11.26'], review: '重温我们的故事', over: '故事结束', normalTitle: '好朋友结局：好人卡', normalDesc: '你是个好人，但更适合跟她做朋友。', badTitle: '直男结局：菜狗', badDesc: '聊得明白吗你就聊。', restart: '重新开始', mistakes: { scene1: '回到 聊天', scene2: '回到 晚餐', scene3: '回到 寒夜', home: '回到 沙发', hair: '回到 吹头发', photo: '回到 拍照', skin: '回到 护肤' } }
 };
+const ASSETS_BASE = window.CDN_BASE || 'assets';
 const ASSETS = {
-  avatars: { me: 'assets/me.jpg', her: 'assets/her.jpg' },
-  xhsCards: ['assets/1.jpg','assets/2.jpg','assets/3.jpg','assets/4.jpg','assets/5.jpg'],
-  bgm: 'assets/BGM.mp3'
+  avatars: { me: `${ASSETS_BASE}/me.jpg`, her: `${ASSETS_BASE}/her.jpg` },
+  xhsCards: [`${ASSETS_BASE}/1.jpg`,`${ASSETS_BASE}/2.jpg`,`${ASSETS_BASE}/3.jpg`,`${ASSETS_BASE}/4.jpg`,`${ASSETS_BASE}/5.jpg`],
+  bgm: `${ASSETS_BASE}/BGM.mp3`
 };
 
 const LOGIC_W = 450;
@@ -272,13 +273,13 @@ function App() {
       ctx.fillStyle = color; ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
     };
 
-    const drawText = (text, x, y, size, color = COLORS.text, align = 'center', fontName = '"ZCOOL KuaiLe", sans-serif') => {
+    const drawText = (text, x, y, size, color = COLORS.text, align = 'center', fontName = 'system-ui, -apple-system, PingFang SC, Microsoft YaHei, Arial, sans-serif') => {
       ctx.fillStyle = color; ctx.font = `${size}px ${fontName}`; ctx.textAlign = align;
       ctx.textBaseline = 'middle'; ctx.fillText(text, x, y); ctx.textBaseline = 'alphabetic';
     };
 
     const drawParagraph = (text, x, y, maxWidth, lineHeight, fontSize, color = COLORS.text, align = 'left') => {
-        ctx.fillStyle = color; ctx.font = `${fontSize}px "ZCOOL KuaiLe", sans-serif`; ctx.textAlign = align;
+        ctx.fillStyle = color; ctx.font = `${fontSize}px system-ui, -apple-system, PingFang SC, Microsoft YaHei, Arial, sans-serif`; ctx.textAlign = align;
         let words = text.split(''); let line = ''; let currentY = y;
         for(let n = 0; n < words.length; n++) {
           let testLine = line + words[n]; let metrics = ctx.measureText(testLine);
@@ -301,7 +302,7 @@ function App() {
       ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, 20); else ctx.rect(x, y, w, h);
       ctx.fill(); ctx.stroke(); ctx.shadowBlur = 0;
       let fontSize = 18; if (text.length > 10) fontSize = 16; if (text.length > 14) fontSize = 14; if (text.length > 18) fontSize = 12;
-      ctx.font = `${fontSize}px "ZCOOL KuaiLe", sans-serif`; ctx.textAlign = 'center'; ctx.fillStyle = hover ? '#fff' : btnColor;
+      ctx.font = `${fontSize}px system-ui, -apple-system, PingFang SC, Microsoft YaHei, Arial, sans-serif`; ctx.textAlign = 'center'; ctx.fillStyle = hover ? '#fff' : btnColor;
       ctx.fillText(text, x + w/2, y + h/2 + fontSize/3);
       if (hover && gameState.current.mouse.clicked) { gameState.current.mouse.clicked = false; callback(); }
     };
@@ -729,7 +730,7 @@ function App() {
         lines.forEach((line, i) => {
             if (s.frameCount > i * 20) {
                 const alpha = Math.min(1, (s.frameCount - i * 20) / 20);
-                ctx.globalAlpha = alpha; ctx.fillStyle = '#333'; ctx.font = `18px "ZCOOL KuaiLe", sans-serif`; ctx.textAlign = 'center'; ctx.fillText(line, LOGIC_W / 2, startY + i * 28);
+                ctx.globalAlpha = alpha; ctx.fillStyle = '#333'; ctx.font = `18px system-ui, -apple-system, PingFang SC, Microsoft YaHei, Arial, sans-serif`; ctx.textAlign = 'center'; ctx.fillText(line, LOGIC_W / 2, startY + i * 28);
             }
         });
         ctx.globalAlpha = 1.0;
@@ -757,6 +758,7 @@ function App() {
       const barW = 300, barH = 20, x = (LOGIC_W - barW) / 2, y = LOGIC_H / 2;
       drawRect(x, y, barW, barH, '#eee', 10);
       drawRect(x, y, Math.floor(barW * ratio), barH, COLORS.primary, 10);
+      drawText('对不起，加载速度非常慢，10分钟起步，耐心等一等🥺', LOGIC_W / 2, y + 50, 14, '#999');
       if (ratio >= 1) { s.current = STATE.MENU; }
     };
 
