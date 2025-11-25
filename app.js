@@ -47,7 +47,8 @@ const TEXT = {
 };
 const ASSETS = {
   avatars: { me: 'assets/me.jpg', her: 'assets/her.jpg' },
-  xhsCards: ['assets/1.jpg','assets/2.jpg','assets/3.jpg','assets/4.jpg','assets/5.jpg']
+  xhsCards: ['assets/1.jpg','assets/2.jpg','assets/3.jpg','assets/4.jpg','assets/5.jpg'],
+  bgm: 'assets/BGM.mp3'
 };
 
 const LOGIC_W = 450;
@@ -56,6 +57,7 @@ const LOGIC_H = 800;
 function App() {
   const canvasRef = useRef(null);
   const imagesRef = useRef({ me: null, her: null, cards: [] });
+  const audioRef = useRef(null);
 
   const gameState = useRef({
     current: STATE.MENU,
@@ -105,6 +107,15 @@ function App() {
     imagesRef.current = { me: new Image(), her: new Image(), cards: ASSETS.xhsCards.map(src => { const img = new Image(); img.src = src; return img; }) };
     imagesRef.current.me.src = ASSETS.avatars.me;
     imagesRef.current.her.src = ASSETS.avatars.her;
+
+    audioRef.current = new Audio(ASSETS.bgm);
+    audioRef.current.loop = true;
+    const ensurePlay = () => { if (audioRef.current) audioRef.current.play().catch(() => {}); };
+    ensurePlay();
+    window.addEventListener('mousedown', ensurePlay);
+    window.addEventListener('touchstart', ensurePlay, { passive: true });
+    window.addEventListener('keydown', ensurePlay);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) ensurePlay(); });
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -769,6 +780,9 @@ function App() {
       canvas.removeEventListener('touchstart', handleInputStart);
       canvas.removeEventListener('touchmove', handleInputMove);
       canvas.removeEventListener('touchend', handleInputEnd);
+      window.removeEventListener('mousedown', ensurePlay);
+      window.removeEventListener('touchstart', ensurePlay);
+      window.removeEventListener('keydown', ensurePlay);
     };
   }, []);
 
