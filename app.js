@@ -110,7 +110,7 @@ function App() {
     imagesRef.current.me.decoding = 'async';
     imagesRef.current.her.decoding = 'async';
 
-    const assetsTotal = 1 + 2 + ASSETS.xhsCards.length;
+    const assetsTotal = 2;
     gameState.current.preload.total = assetsTotal;
     gameState.current.preload.loaded = 0;
 
@@ -119,15 +119,12 @@ function App() {
 
     imagesRef.current.me.onload = onAssetLoaded; imagesRef.current.me.onerror = onAssetFailed; imagesRef.current.me.src = ASSETS.avatars.me;
     imagesRef.current.her.onload = onAssetLoaded; imagesRef.current.her.onerror = onAssetFailed; imagesRef.current.her.src = ASSETS.avatars.her;
-    imagesRef.current.cards.forEach((img, i) => { img.onload = onAssetLoaded; img.onerror = onAssetFailed; img.src = ASSETS.xhsCards[i]; });
+    imagesRef.current.cards.forEach((img, i) => { img.src = ASSETS.xhsCards[i]; });
 
     audioRef.current = new Audio();
     audioRef.current.src = ASSETS.bgm;
     audioRef.current.loop = true;
-    audioRef.current.preload = 'auto';
-    audioRef.current.addEventListener('canplaythrough', onAssetLoaded, { once: true });
-    audioRef.current.addEventListener('error', onAssetFailed, { once: true });
-    audioRef.current.load();
+    audioRef.current.preload = 'none';
     const ensurePlay = () => { if (audioRef.current) audioRef.current.play().catch(() => {}); };
     window.addEventListener('mousedown', ensurePlay);
     window.addEventListener('touchstart', ensurePlay, { passive: true });
