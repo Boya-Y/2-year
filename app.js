@@ -45,7 +45,7 @@ const TEXT = {
   ending: { congrats: '2周年快乐！', letter: ['亲爱的橘子：', '', '两周年快乐！', '谢谢你这两年的包容与陪伴。', '未来的每一个春夏秋冬，', '我都想和你一起度过。', '', '爱你的 伯牙', '2023.11.26'], review: '重温我们的故事', over: '故事结束', normalTitle: '普通结局：好人卡', normalDesc: '你是个好人，但可能还不够懂她。', badTitle: '坏结局：钢铁直男', badDesc: '有些机会错过了，就真的错过了。', restart: '重新开始', mistakes: { scene1: '回到 聊天', scene2: '回到 晚餐', scene3: '回到 寒夜', home: '回到 沙发', hair: '回到 吹头发', photo: '回到 拍照', skin: '回到 护肤' } }
 };
 const ASSETS = {
-  avatars: { me: 'me.jpg', her: 'her.jpg' },
+  avatars: { me: 'assets/me.jpg', her: 'assets/her.jpg' },
   xhsCards: ['assets/1.jpg','assets/2.jpg','assets/3.jpg','assets/4.jpg','assets/5.jpg']
 };
 
