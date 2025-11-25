@@ -104,14 +104,15 @@ function App() {
     const ctx = canvas.getContext('2d');
     let animationFrameId;
 
-    imagesRef.current = { me: new Image(), her: new Image(), cards: ASSETS.xhsCards.map(src => { const img = new Image(); img.src = src; return img; }) };
-    imagesRef.current.me.src = ASSETS.avatars.me;
-    imagesRef.current.her.src = ASSETS.avatars.her;
+    imagesRef.current = { me: new Image(), her: new Image(), cards: ASSETS.xhsCards.map(src => { const img = new Image(); img.decoding = 'async'; img.src = src; return img; }) };
+    imagesRef.current.me.decoding = 'async'; imagesRef.current.me.src = ASSETS.avatars.me;
+    imagesRef.current.her.decoding = 'async'; imagesRef.current.her.src = ASSETS.avatars.her;
 
-    audioRef.current = new Audio(ASSETS.bgm);
+    audioRef.current = new Audio();
+    audioRef.current.src = ASSETS.bgm;
     audioRef.current.loop = true;
+    audioRef.current.preload = 'none';
     const ensurePlay = () => { if (audioRef.current) audioRef.current.play().catch(() => {}); };
-    ensurePlay();
     window.addEventListener('mousedown', ensurePlay);
     window.addEventListener('touchstart', ensurePlay, { passive: true });
     window.addEventListener('keydown', ensurePlay);
@@ -135,7 +136,7 @@ function App() {
       ctx.translate(offsetX, offsetY);
       ctx.scale(scale, scale);
       ctx.imageSmoothingEnabled = true;
-      ctx.imageSmoothingQuality = 'high';
+      ctx.imageSmoothingQuality = 'medium';
     };
     window.addEventListener('resize', resize);
     resize();
